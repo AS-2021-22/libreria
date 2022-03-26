@@ -3,6 +3,8 @@ const bodyParser            = require('body-parser')
 const mysql                 = require('mysql')
 const path                  = require('path')
 const {renderFile}          = require('ejs')
+//const xml                   = require('xml')
+//const xmlParser             = require('express-xml-parser')
 
                               require('dotenv/config')
 
@@ -19,6 +21,7 @@ const DB = mysql.createConnection({
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
+//app.use(xmlParser())
 
 app.use(express.static(path.join(__dirname, '..','public')))
 
@@ -34,7 +37,6 @@ DB.connect((err) => {
     }
 })
 
-
 app.route('/')
 
     .get((_,res) => {
@@ -43,21 +45,20 @@ app.route('/')
 
     .post((req,res) => {
         const {ISBN,autore,titolo} = req.body
-        const sql = /*sql*/`INSERT INTO libro (ISBN,autore,titolo) VALUES ("${ISBN}","${autore}","${titolo}")`
+        const sql = /*sql*/`INSERT INTO libri (ISBN,autore,titolo) VALUES ("${ISBN}","${autore}","${titolo}")`
         DB.query(sql,(err) =>{
-            if(err) res.status(500).json({'sql error':e.message})
-            else res.status(200)
+            if(err) res.status(500).json({'sql error':err.message})
+            else res.status(200).json({'result':"book inserted"})
         })
     })
 
     .put((req,res)=>{
         const {ISBN,autore,titolo} = req.body
-        const sql = /*sql*/`UPDATE libro SET titolo = "${titolo}", autore = "${autore}" WHERE ISBN = "${ISBN}"`
+        const sql = /*sql*/`UPDATE libri SET titolo = "${titolo}", autore = "${autore}" WHERE ISBN = "${ISBN}"`
         DB.query(sql,(err) =>{
-            if(err) res.status(500).json({'sql error':e.message})
-            else res.status(200)
+            if(err) res.status(500).json({'sql error':err.message})
+            else res.status(200).json({'result':"book updated"})
         })
-        res.status(200).json()
     })
 
 app.delete('/:ISBN',(req,res) =>{
@@ -65,7 +66,7 @@ app.delete('/:ISBN',(req,res) =>{
     const sql = /*sql*/`DELETE FROM libri WHERE ISBN = "${ISBN}"`
     DB.query(sql,(err)=>{
         if(err) res.status(500).json({'sql error':e.message})
-        else res.status(200)
+        else res.status(200).json({'result':"book deleted"})
     })
 })
 
@@ -73,7 +74,15 @@ app.delete('/:ISBN',(req,res) =>{
 app.post('/get_libri',(req,res) => {
     const sql = /*sql*/`SELECT * FROM libri ${req.filter || ''}`
     DB.query(sql,(err,result)=>{
-        if(err) res.status(500).json({'sql error':e.message})
+        if(err) res.status(500).json({'sql error':err.message})
+        else res.status(200).json(result)
+    })
+})
+
+app.get('/get_libri',(req,res) => {
+    const sql = /*sql*/`SELECT * FROM libri ${req.filter || ''}`
+    DB.query(sql,(err,result)=>{
+        if(err) res.status(500).json({'sql error':err.message})
         else res.status(200).json(result)
     })
 })
