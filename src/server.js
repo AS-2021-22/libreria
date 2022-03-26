@@ -61,6 +61,11 @@ app.route('/')
         })
     })
 
+
+app.get('/add_libro',(_,res)=> {
+    res.sendFile(path.join(htmlFolder,'add_libro.html'))
+})
+
 app.delete('/:ISBN',(req,res) =>{
     const {ISBN} = req.params
     const sql = /*sql*/`DELETE FROM libri WHERE ISBN = "${ISBN}"`
