@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Main Page</title>
+</head>
+<body>
+    <p style="opacity: 0%;" id="raw-text"><%= books %></p>
+    <script>
+        books = JSON.parse(document.getElementById('raw-text').innerText)
+        console.log(books)
+    </script>
+</body>
+
+</html>

@@ -1,10 +1,10 @@
 function registerBook (e) {
     e.preventDefault()
     const ISBN = document.getElementById('inputISBN').value
-    const title =  document.getElementById('inputTitle').value
-    const author =  document.getElementById('inputAuthor').value
+    const titolo =  document.getElementById('inputTitolo').value
+    const autore =  document.getElementById('inputAutore').value
 
-    const data = {ISBN,title,author}
+    const data = {ISBN,titolo,autore}
 
     fetch('/',{
         method: 'POST',

@@ -76,15 +76,18 @@ app.delete('/:ISBN',(req,res) =>{
 })
 
 
-app.post('/get_libri',(req,res) => {
+app.get('/get_libri',(req,res) => {
     const sql = /*sql*/`SELECT * FROM libri ${req.filter || ''}`
     DB.query(sql,(err,result)=>{
-        if(err) res.status(500).json({'sql error':err.message})
-        else res.status(200).json(result)
+        if(err) res.status(500).send('SQL error impossible retrieve books')
+        else {
+            s = JSON.stringify(result)
+            res.status(200).render(path.join(htmlFolder,'get_libri.html'),{books:s})
+        }
     })
 })
 
-app.get('/get_libri',(req,res) => {
+app.post('/get_libri',(req,res) => {
     const sql = /*sql*/`SELECT * FROM libri ${req.filter || ''}`
     DB.query(sql,(err,result)=>{
         if(err) res.status(500).json({'sql error':err.message})
