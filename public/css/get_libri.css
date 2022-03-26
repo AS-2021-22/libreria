@@ -11,7 +11,11 @@ img {
   display: inline-block;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   margin: 0;
   font-weight: 400;
 }
@@ -88,7 +92,8 @@ h1, h2, h3, h4, h5 {
   font-weight: 300;
 }
 
-.card__stats th, .card__stats td {
+.card__stats th,
+.card__stats td {
   width: 50%;
   padding: 0.25em 0.5em 0;
 }
@@ -110,23 +115,23 @@ h1, h2, h3, h4, h5 {
 }
 
 .card--normal {
-  background: linear-gradient(110deg, #FDBB2D 0%, #3A1C71 100%);
-  -webkit-box-shadow: 0px 5px 20px -10px #3A1C71;
-          box-shadow: 0px 5px 20px -10px #3A1C71;
+  background: linear-gradient(110deg, #fdbb2d 0%, #3a1c71 100%);
+  -webkit-box-shadow: 0px 5px 20px -10px #3a1c71;
+          box-shadow: 0px 5px 20px -10px #3a1c71;
 }
 
 .card--normal .card__type {
-  background-color: #C08A53;
+  background-color: #c08a53;
 }
 
 .card--water {
-  background: linear-gradient(120deg, #1CB5E0 0%, #000851 100%);
+  background: linear-gradient(120deg, #1cb5e0 0%, #000851 100%);
   -webkit-box-shadow: 0px 5px 20px -10px #000851;
           box-shadow: 0px 5px 20px -10px #000851;
 }
 
 .card--water .card__type {
-  background-color: #1CB5E0;
+  background-color: #1cb5e0;
 }
 
 .card--electric {
@@ -188,48 +193,48 @@ h1, h2, h3, h4, h5 {
 }
 
 .card:nth-child(1) {
-  -webkit-transform: translateY(0px) rotate(1deg);
-          transform: translateY(0px) rotate(1deg);
+  -webkit-transform: translateY(0px) rotate(4deg);
+          transform: translateY(0px) rotate(4deg);
 }
 
 .card:nth-child(2) {
-  -webkit-transform: translateY(0px) rotate(-1deg);
-          transform: translateY(0px) rotate(-1deg);
-}
-
-.card:nth-child(3) {
-  -webkit-transform: translateY(0px) rotate(4deg);
-          transform: translateY(0px) rotate(4deg);
-}
-
-.card:nth-child(4) {
-  -webkit-transform: translateY(0px) rotate(0deg);
-          transform: translateY(0px) rotate(0deg);
-}
-
-.card:nth-child(5) {
-  -webkit-transform: translateY(0px) rotate(4deg);
-          transform: translateY(0px) rotate(4deg);
-}
-
-.card:nth-child(6) {
   -webkit-transform: translateY(0px) rotate(2deg);
           transform: translateY(0px) rotate(2deg);
 }
 
+.card:nth-child(3) {
+  -webkit-transform: translateY(0px) rotate(-5deg);
+          transform: translateY(0px) rotate(-5deg);
+}
+
+.card:nth-child(4) {
+  -webkit-transform: translateY(0px) rotate(-1deg);
+          transform: translateY(0px) rotate(-1deg);
+}
+
+.card:nth-child(5) {
+  -webkit-transform: translateY(0px) rotate(-1deg);
+          transform: translateY(0px) rotate(-1deg);
+}
+
+.card:nth-child(6) {
+  -webkit-transform: translateY(0px) rotate(0deg);
+          transform: translateY(0px) rotate(0deg);
+}
+
 .card:nth-child(7) {
-  -webkit-transform: translateY(0px) rotate(-4deg);
-          transform: translateY(0px) rotate(-4deg);
+  -webkit-transform: translateY(0px) rotate(4deg);
+          transform: translateY(0px) rotate(4deg);
 }
 
 .card:nth-child(8) {
-  -webkit-transform: translateY(0px) rotate(-2deg);
-          transform: translateY(0px) rotate(-2deg);
+  -webkit-transform: translateY(0px) rotate(-5deg);
+          transform: translateY(0px) rotate(-5deg);
 }
 
 .card:nth-child(9) {
-  -webkit-transform: translateY(0px) rotate(4deg);
-          transform: translateY(0px) rotate(4deg);
+  -webkit-transform: translateY(0px) rotate(0deg);
+          transform: translateY(0px) rotate(0deg);
 }
 
 .card:hover {
