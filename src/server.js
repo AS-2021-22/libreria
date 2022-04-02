@@ -61,11 +61,6 @@ app.route('/')
         })
     })
 
-
-app.get('/add_libro',(_,res)=> {
-    res.sendFile(path.join(htmlFolder,'add_libro.html'))
-})
-
 app.delete('/:ISBN',(req,res) =>{
     const {ISBN} = req.params
     const sql = /*sql*/`DELETE FROM libri WHERE ISBN = "${ISBN}"`
@@ -76,24 +71,36 @@ app.delete('/:ISBN',(req,res) =>{
 })
 
 
-app.get('/get_libri',(req,res) => {
-    const sql = /*sql*/`SELECT * FROM libri ${req.filter || ''}`
-    DB.query(sql,(err,result)=>{
-        if(err) res.status(500).send('SQL error impossible retrieve books')
-        else {
-            s = JSON.stringify(result)
-            res.status(200).render(path.join(htmlFolder,'get_libri.html'),{books:s})
-        }
-    })
+app.get('/add_libro',(_,res)=> {
+    res.sendFile(path.join(htmlFolder,'add_libro.html'))
 })
 
-app.post('/get_libri',(req,res) => {
-    const sql = /*sql*/`SELECT * FROM libri ${req.filter || ''}`
-    DB.query(sql,(err,result)=>{
-        if(err) res.status(500).json({'sql error':err.message})
-        else res.status(200).json(result)
+app.route('/get_libri')
+    .get((_,res) => {
+        // const sql = /*sql*/`SELECT * FROM libri ${req.filter || ''}`
+        // DB.query(sql,(err,result)=>{
+        //     if(err) res.status(500).send('SQL error impossible retrieve books')
+        //     else {
+        //         s = JSON.stringify(result)
+        //         res.status(200).render(path.join(htmlFolder,'get_libri.html'),{books:s})
+        //     }
+        // })
+        res.sendFile(path.join(htmlFolder,'get_libri.html'))
     })
-})
+
+    .post((req,res) => {
+        try{
+            console.log('hi')
+        const sql = /*sql*/`SELECT * FROM libri ${req.filter || ''}`
+        DB.query(sql,(err,result)=>{
+            if(err) res.status(500).json({'sql error':err.message})
+            else res.status(200).json(result)
+        })
+        }
+        catch(e){
+            res.status(500)
+        }
+    })
 
 
 

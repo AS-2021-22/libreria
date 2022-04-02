@@ -2,12 +2,25 @@
 <html lang="en">
 <head>
     <title>Main Page</title>
+    <link rel="stylesheet" href="./../css/radio_button.css"/>
     <link rel="stylesheet" href="./../css/get_libri.css" />
-    <link rel="stylesheet" href="./../css/get_libri.css.map"/>
 </head>
 <body>
 
-    <div id="cards">  </div>    
+  <div class="wrapper">
+    <input type="radio" name="select" id="option-1" checked>
+    <input type="radio" name="select" id="option-2">
+      <label for="option-1" class="option option-1">
+        <div class="dot"></div>
+         <span>Titolo</span>
+         </label>
+      <label for="option-2" class="option option-2">
+        <div class="dot"></div>
+         <span>Autore</span>
+      </label>
+   </div>
+
+    <div id="cards">  </div>
 
     <p style="opacity: 0%;" id="raw-text"><%= books %></p>
 
