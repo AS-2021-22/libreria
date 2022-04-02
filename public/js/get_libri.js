@@ -2,7 +2,7 @@
 fetch('/get_libri',{
   method:'POST',
   headers:{'Content-Type':'application/json'},
-  body: JSON.stringify('{}')
+  body: JSON.stringify({order:'titolo'})
 }) .then(res => res.json()
     .then(json => generate_cards(json))
     .catch(e => console.log(e.message))

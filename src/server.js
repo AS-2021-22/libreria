@@ -89,17 +89,11 @@ app.route('/get_libri')
     })
 
     .post((req,res) => {
-        try{
-            console.log('hi')
-        const sql = /*sql*/`SELECT * FROM libri ${req.filter || ''}`
+        const sql = /*sql*/`SELECT * FROM libri ${req.body.filter || ''} ORDER BY ${req.body.order || 'ISBN'}`
         DB.query(sql,(err,result)=>{
             if(err) res.status(500).json({'sql error':err.message})
             else res.status(200).json(result)
         })
-        }
-        catch(e){
-            res.status(500)
-        }
     })
 
 
