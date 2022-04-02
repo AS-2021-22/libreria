@@ -542,34 +542,31 @@
     <p style="opacity: 0%;" id="raw-text"><%= books %></p>
 
     <script>
-      classes = ['normal','water','electric','fire','psychic','dark','grass','ice','fairy']
+      const classes = ['normal','water','electric','fire','psychic','dark','grass','ice','fairy']
 
       const cardCollection = document.getElementById('cards')
+
+      const rand_class = classes[Math.floor(Math.random() * classes.length)]
 
       cardCollection.innerHTML += 
 
       `
-      <figure class="card card--${classes[Math.floor(Math.random() * classes.lenght)]}}">
-               
-               <figcaption class="card__caption">
-                 <h3 class="card__type">
-                   6796749
-                 </h3>
-             
-                <tbody>
-                  <h1>Le Cronache Di Narnia</h1>
-                </tbody>
-                 
-                 <div class="card__abilities">
-                   <h4 class="card__ability">
-                     <span class="card__label">Autore</span>
-                     Tizio di cui non ricordo il nome
-                   </h4>
-                 </div>
-     
-               </figcaption>
-             </figure>
-          `
+      <figure class="card card--${rand_class}">          
+          <figcaption class="card__caption">
+            <h3 class="card__type">6796749</h3>
+            <h1 class="card__name">Le Cronache Di Narnia</h1>
+            
+            <div class="card__abilities">
+              <h4 class="card__ability">
+                <span class="card__label"><b>Author</b></span>
+              </h4>
+              <h4 class="card__ability">
+                <span class="card__label">Giovanni Carminati</span>
+              </h4>
+            </div>
+          </figcaption>
+        </figure>
+      `
 
     </script>
 
