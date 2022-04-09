@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mar 26, 2022 alle 09:11
+-- Creato il: Apr 09, 2022 alle 09:48
 -- Versione del server: 10.4.17-MariaDB
 -- Versione PHP: 7.3.27
 
@@ -39,8 +39,11 @@ CREATE TABLE `libri` (
 
 INSERT INTO `libri` (`ISBN`, `autore`, `titolo`) VALUES
 ('0199538697', 'Emilè Zolà', 'Nanà'),
+('0451526856', 'William Shakespeare', 'Otello'),
 ('147166063', 'Italo Svevo', 'La Coscienza Di Zeno'),
+('743298472', 'G. D\'annunzio', 'Alcyone'),
 ('880467234', 'Alessandro Manzoni', 'I Promessi Sposi'),
+('8806241214', 'Lev Tolstoj', 'Guerra e pace'),
 ('8893442418', 'Umberto Eco', 'Il Fascismo Eterno');
 
 --
