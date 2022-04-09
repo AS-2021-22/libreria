@@ -1,3 +1,26 @@
+let global_books = []
+
+const change = (e) => {
+  if(e.target.value == 'Titolo'){
+    global_books.sort((a,b) => {
+      if (a.titolo.toUpperCase() > b.titolo.toUpperCase()) return 1
+      else return -1
+    })
+    generate_cards(global_books)
+  } else if (e.target.value == 'Autore'){
+    global_books.sort((a,b) => {
+      if (a.autore.toUpperCase() > b.autore.toUpperCase()) return 1
+      else return -1
+    })
+    generate_cards(global_books)
+  }
+}
+
+const switchs = document.getElementsByName('select')
+
+for(const radioButton of switchs){
+  radioButton.addEventListener('change', change);
+} 
 
 fetch('/get_libri',{
   method:'POST',
@@ -11,14 +34,18 @@ fetch('/get_libri',{
 
 
 function generate_cards(books){
+  global_books = books
+
   const classes = ['normal','water','electric','fire','psychic','dark','grass','ice','fairy']
 
   const cardCollection = document.getElementById('cards')
 
+  cardCollection.innerHTML = ""
 
-  for(let i = 0; i < books.length; i++) {
 
-    const {ISBN,titolo,autore} = books[i]
+  for(let i = 0; i < global_books.length; i++) {
+
+    const {ISBN, titolo, autore} = global_books[i]
 
     const rand_class = classes[Math.floor(Math.random() * classes.length)]
 
