@@ -21,7 +21,6 @@ const DB = mysql.createConnection({
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
-//app.use(xmlParser())
 
 app.use(express.static(path.join(__dirname, '..','public')))
 
@@ -77,14 +76,6 @@ app.get('/add_libro',(_,res)=> {
 
 app.route('/get_libri')
     .get((_,res) => {
-        // const sql = /*sql*/`SELECT * FROM libri ${req.filter || ''}`
-        // DB.query(sql,(err,result)=>{
-        //     if(err) res.status(500).send('SQL error impossible retrieve books')
-        //     else {
-        //         s = JSON.stringify(result)
-        //         res.status(200).render(path.join(htmlFolder,'get_libri.html'),{books:s})
-        //     }
-        // })
         res.sendFile(path.join(htmlFolder,'get_libri.html'))
     })
 
